@@ -1,32 +1,35 @@
 <!doctype html>
 <html>
-    <head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
-        <title>My Wishlist</title>
-        <link rel="stylesheet" href="index.css">
-    </head>
-    
-    <body>
-        <div>
-            <div class='login-div'>
-                <div>
-                    <h1>Enter Your Name </h1>
-                    <form id='login-form' >
-                        <input id='name' placeholder="Enter Your Name" style="display : block"/>
-                        <button type="submit">Log In</button>
-                    </form>
-                </div>
+
+<head>
+    <title>My Wishlist</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div>
+        <div class='login-div'>
+            <div>
+                <h1>Enter Your Name </h1>
+                <form id='login-form'>
+                    <input id='name' placeholder="Enter Your Name" style="display : block" />
+                    <button class='login-btn' type="submit">Log In</button>
+                </form>
             </div>
-        
-        
-        <div class="input-div"> 
+        </div>
+
+
+        <div class="input-div">
             <h1 id='username-headline'></h1>
             <form id='wishlist-form'>
-                <input id='input' placeholder="Enter Your Wishlist " /> 
-                <button type='submit' id='add-btn'>Add</button> 
+                <input id='input' placeholder="Enter Your Wishlist " />
+                <button type='submit' id='add-btn'>Add</button>
             </form>
         </div>
-       <div class="wishlist" style="display:none"></div>
+
+        <div class="wishlist" style="display:none"></div>
     </div>
-        <script src="index.js"></script>
-    </body>
+    <script src="index.js"></script>
+</body>
+
 </html>

@@ -1,4 +1,4 @@
-let wishlist = [ ];
+let wishlist = [];
 let userName = ''
 /** Challenge: 
   - Iterate over the wishlist array.
@@ -13,49 +13,48 @@ let userName = ''
 document.getElementById('add-btn').addEventListener('click', handleClick)*/
 
 
-document.getElementById('login-form').addEventListener('submit',(e)=>handleLogIn(e))
-document.getElementById('wishlist-form').addEventListener('submit',(e)=> handleClick(e))
+document.getElementById('login-form').addEventListener('submit', (e) => handleLogIn(e))
+document.getElementById('wishlist-form').addEventListener('submit', (e) => handleClick(e))
 
-      renderWishlist()
+renderWishlist()
 
 
 
-function handleLogIn(e){
+function handleLogIn(e) {
     e.preventDefault()
-    const name =e.target.name.value
-    
-    if(name === ''){
+    const name = e.target.name.value
+
+    if (name === '') {
         alert('Enter your Name')
-    }else{
-            userName = name
+    } else {
+        userName = name
     }
     e.target.name.value = ''
-    
-    document.getElementById('username-headline').innerText = userName+ "'s Wishlist"
-    document.getElementsByClassName('input-div')[0].style.display = 'unset'
+
+    document.getElementById('username-headline').innerText = userName + "'s Wishlist"
+    document.getElementsByClassName('input-div')[0].style.display = 'flex'
     document.getElementsByClassName('login-div')[0].style.display = 'none'
     document.getElementsByClassName('wishlist')[0].style.display = 'unset'
     /*Direct Dom Manipulation is not a good practice */
 
 }
 
-  function handleDelete(index) {
-      wishlist.splice(index, 1);
-          localStorage.setItem('wishlistdata', JSON.stringify(wishlist))
-      renderWishlist();
-      console.log('clicked')
-    }
+function handleDelete(index) {
+    wishlist.splice(index, 1);
+    localStorage.setItem('wishlistdata', JSON.stringify(wishlist))
+    renderWishlist();
+}
 
-function handleClick(e){
+function handleClick(e) {
     e.preventDefault()
-    
-    const wishlistItem =  e.target.input.value 
-    
-    if(wishlistItem === ''){
+
+    const wishlistItem = e.target.input.value
+
+    if (wishlistItem === '') {
         alert('Enter a valid Input')
-    }else{
-            /*wishlist.push(wishlistItem)*/
-            wishlist = [wishlistItem,...wishlist]
+    } else {
+        /*wishlist.push(wishlistItem)*/
+        wishlist = [wishlistItem, ...wishlist]
     }
     localStorage.setItem('wishlistdata', JSON.stringify(wishlist))
     renderWishlist()
@@ -63,12 +62,12 @@ function handleClick(e){
 
 }
 
-function renderWishlist(){
+function renderWishlist() {
     const wistlistData = localStorage.getItem('wishlistdata')
-     const wishlistInnerHTML = JSON.parse(wistlistData).map((item,index)=> 
-            `<li>${item} <button  class='item-btn' onClick='handleDelete(${index})'>
-            Delete</button></li>`).join('')
-            console.log(wishlistInnerHTML)
+    const wishlistInnerHTML = JSON.parse(wistlistData).map((item, index) =>
+        `<div><li>${item} </li> 
+            <button  class='item-btn' onClick='handleDelete(${index})'>
+            Delete</button></div>`).join('')
 
     document.getElementsByClassName('wishlist')[0].innerHTML = ` <ul>${wishlistInnerHTML}</ul>`
 }
